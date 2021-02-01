@@ -13,7 +13,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiYXNseW9uczAwMSIsImEiOiJja2toZGhxN24wYTFrMm5xa
             }
         };
 
-        fetch('../json/mcd_hic_fc_p1.json')
+        fetch('public/json/mcd_hic_fc_p1.json')
             .then((res) => res.json())
             .then(data => formatToGeo(data))
 
