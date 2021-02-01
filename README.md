@@ -1,1 +1,2 @@
-# turf-poc
+# Proof of Concept for Turf.js
+
