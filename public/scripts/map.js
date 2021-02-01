@@ -69,30 +69,8 @@ map.on('load', function() {
             features: []
         }
     });
-});
-
-var popup = new mapboxgl.Popup();
-
-map.on('mousemove', function(e) {
-  var features = map.queryRenderedFeatures(e.point, { layers: ['mcData', 'myLocation'] });
-  if (!features.length) {
-    popup.remove();
-    return;
-  }
-  var feature = features[0];
-
-  popup.setLngLat(feature.geometry.coordinates)
-    .setHTML(feature.properties.Address)
-    .addTo(map);
-
-  map.getCanvas().style.cursor = features.length ? 'pointer' : '';
-});
-
-
-
-map.on('click', function(e) {
-
-    var i = 0;
+        
+            var i = 0;
     var closestPoints = [];
 
     tfC = turf.featureCollection(mcData.features)
@@ -123,6 +101,32 @@ map.on('click', function(e) {
             'circle-color': '#486DE0'
         }
     }, 'mcData');
+        
+});
+
+var popup = new mapboxgl.Popup();
+
+map.on('mousemove', function(e) {
+  var features = map.queryRenderedFeatures(e.point, { layers: ['mcData', 'myLocation'] });
+  if (!features.length) {
+    popup.remove();
+    return;
+  }
+  var feature = features[0];
+
+  popup.setLngLat(feature.geometry.coordinates)
+    .setHTML(feature.properties.Address)
+    .addTo(map);
+
+  map.getCanvas().style.cursor = features.length ? 'pointer' : '';
+});
+
+
+
+map.on('click', function(e) {
+
+        console.log("click");
+
 });
 
 // Bring JSON to geoJSON format
