@@ -99,7 +99,7 @@ map.on('click', function(e) {
     tpC = turf.point(myLocation.geometry.coordinates)
 
     // Kept this in map.on click, but could be set up to work with map.on load
-    while(i < 100) {
+    while(i < 20) {
         var geoJ = turf.nearestPoint(tpC, tfC)
         console.log(geoJ)
         closestPoints.push(geoJ);
