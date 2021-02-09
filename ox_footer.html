@@ -2,7 +2,7 @@
 <html>
 <head>
     <base href="https://officeofexperience.com" />
-    <title>The Office of Experience | OX Footer Test</title>
+    <title>The Office of Experience | Design and Digital Innovation Chicago | OX</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="title" content=The Office of Experience | Design and Digital Innovation Chicago | OX" />
@@ -608,6 +608,7 @@
         .submit-feedback {
             width: 100%;
             margin-bottom: -76px;
+            margin-top: 20px;
         }
 
         #submit-button {
@@ -626,20 +627,17 @@
             padding-top: 30px;
         }
 
-        .submit-feedback {
-            margin-top: 20px;
-        }
-
         #email-input, #mce-EMAIL {
             background-color: #292722;
             border: 1px solid #949494;
             color: #fff;
             height: 46px;
             padding-top: 23px;
+            z-index: 5;
         }
 
-        #mce-EMAIL.invalid {
-            border: 1px solid #1EEBCE;
+        .invalid #mce-EMAIL {
+            border: 1px solid #FF4D4D;
         }
 
         .footer-partners {
@@ -741,15 +739,48 @@
 
         }
 
-        .hideme {
-            display: none;
+        .validate, .submit-button {
+            transition: opacity .25s;
         }
 
         .hidden {
-            visibility: hidden;
-            padding-top: 0!important;
-            margin-bottom: -100px;
+            opacity: 0;
         }
+
+        .submit-error {
+            position: absolute;
+            opacity: 0;
+            transition: opacity .5s;
+        }
+
+        .submit-feedback {
+            position: absolute;
+            opacity: 0;
+            transition: opacity .25s .25s;
+            margin-top:-50px;
+            visibility: hidden;
+        }
+
+        .submit-error.showme, .submit-feedback.showme  {
+            opacity: 1;
+            display: inherit;
+            visibility: visible;
+        }
+
+        .submit-error p {
+            color: #FF4D4D;
+            margin: 10px;
+        }
+
+        #submit-button {
+            transition: background-color .5s;
+            z-index: 5;
+        }
+
+        .invalid + #submit-button {
+            background-color: #808080!important;
+        }
+
 
     </style>
 
@@ -766,18 +797,21 @@
             var submitForm = document.getElementsByClassName('validate')[0];
             var submitButton = document.getElementsByClassName('submit-button')[0];
             var submitFeedback = document.getElementsByClassName('submit-feedback')[0];
-
+            var submitError = document.getElementsByClassName('submit-error')[0];
 
             submitButton.addEventListener('click', function() {
 
                 var submitInput = document.getElementById('mce-EMAIL');
+                var submitContainer = document.getElementById("mc_embed_signup");
 
                 if (validateEmail(submitInput.value)) {
                     submitForm.classList.add('hidden');
                     submitButton.classList.add('hidden');
-                    submitFeedback.classList.remove('hideme');
+                    submitFeedback.classList.add('showme');
+                    submitError.classList.remove('showme');
                 } else {
-                    submitInput.classList.add('invalid');
+                    submitContainer.classList.add('invalid');
+                    submitError.classList.add('showme');
                 }
 
             });
@@ -793,11 +827,6 @@
             <h4>Sign up for OXbox</h4>
             <p>Get the latest news and insights from OX every month.</p>
 
-            <div class="submit-feedback hideme">
-                <h4>Got it!</h4>
-                <p>We'll keep you in the loop.</p>
-            </div>
-
             <form action="https://officeofexperience.us14.list-manage.com/subscribe/post?u=f0c262661c7720bbbb8a691d9&id=6c5e855bca" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
                 <input type="text" value="" name="EMAIL" id="mce-EMAIL" placeholder="Email Address">
                 <!--
@@ -810,10 +839,20 @@
                 <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_f0c262661c7720bbbb8a691d9_6c5e855bca" tabindex="-1" value=""></div>
                 <!-- <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div> -->
             </form>
+
+            <div class="submit-feedback">
+                <h4>Got it!</h4>
+                <p>We'll keep you in the loop.</p>
+            </div>
+
+            <div class="submit-error">
+                <p>Please enter a valid email</p>
+            </div>
+
         </div>
         <!--End mc_embed_signup-->
         <button id="submit-button" class="submit-button" style="background-color:#1eebce; color:#000; padding:14.75px 15px;border: none; margin-left:-45px; font-size: 15px; font-weight: 600;">Submit</button>
-
+        
         <svg id="ox-logo-mobile"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-wordmark"></use></svg>
 
         <!--
