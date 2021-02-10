@@ -628,11 +628,16 @@
         }
 
         #email-input, #mce-EMAIL {
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+
             background-color: #292722;
             border: 1px solid #949494;
             color: #fff;
-            height: 46px;
-            padding-top: 23px;
+            height: 48px!important;
+            padding-top: 24px;
+            padding-bottom: 22px;
             z-index: 5;
         }
 
@@ -773,8 +778,23 @@
         }
 
         #submit-button {
+            display: inline-block;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
             transition: background-color .5s;
             z-index: 5;
+            padding: 15px;
+            background-color:#1eebce;
+            color:#000;
+            border: none;
+            margin-left:-45px;
+            font-size: 15px;
+            line-height: 18px;
+            font-weight: 600;
+            height: 48px!important;
+            position: relative;
+            top: -2px;
         }
 
         .invalid + #submit-button {
@@ -851,7 +871,7 @@
 
         </div>
         <!--End mc_embed_signup-->
-        <button id="submit-button" class="submit-button" style="background-color:#1eebce; color:#000; padding:14.75px 15px;border: none; margin-left:-45px; font-size: 15px; font-weight: 600;">Submit</button>
+        <div id="submit-button" class="submit-button">Submit</div>
         
         <svg id="ox-logo-mobile"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-wordmark"></use></svg>
 
