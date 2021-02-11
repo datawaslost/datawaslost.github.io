@@ -688,6 +688,64 @@
             display: none;
         }
 
+        .validate, .submit-button {
+            transition: opacity .25s;
+        }
+
+        .hidden {
+            opacity: 0;
+        }
+
+        .submit-error {
+            position: absolute;
+            opacity: 0;
+            transition: opacity .5s;
+        }
+
+        .submit-feedback {
+            position: absolute;
+            opacity: 0;
+            transition: opacity .25s .25s;
+            margin-top:-50px;
+            visibility: hidden;
+        }
+
+        .submit-error.showme, .submit-feedback.showme  {
+            opacity: 1;
+            display: inherit;
+            visibility: visible;
+        }
+
+        .submit-error p {
+            color: #FF4D4D;
+            margin: 10px;
+        }
+
+        #submit-button {
+            display: inline-block;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            transition: background-color .5s;
+            z-index: 5;
+            padding: 15px;
+            background-color:#1eebce;
+            color:#000;
+            border: none;
+            margin-left:-45px;
+            font-size: 15px;
+            line-height: 18px;
+            font-weight: 600;
+            height: 49px!important;
+            position: relative;
+            /* top: -2px; */
+        }
+
+        .invalid + #submit-button {
+            background-color: #808080!important;
+        }
+
+
         @media only screen and (max-width:1024px) {
 
             .oxbox-signup {
@@ -741,63 +799,11 @@
                 padding-left: 0;
             }
 
-        }
-
-        .validate, .submit-button {
-            transition: opacity .25s;
-        }
-
-        .hidden {
-            opacity: 0;
-        }
-
-        .submit-error {
-            position: absolute;
-            opacity: 0;
-            transition: opacity .5s;
-        }
-
-        .submit-feedback {
-            position: absolute;
-            opacity: 0;
-            transition: opacity .25s .25s;
-            margin-top:-50px;
-            visibility: hidden;
-        }
-
-        .submit-error.showme, .submit-feedback.showme  {
-            opacity: 1;
-            display: inherit;
-            visibility: visible;
-        }
-
-        .submit-error p {
-            color: #FF4D4D;
-            margin: 10px;
-        }
-
-        #submit-button {
-            display: inline-block;
-            box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            -webkit-box-sizing: border-box;
-            transition: background-color .5s;
-            z-index: 5;
-            padding: 15px;
-            background-color:#1eebce;
-            color:#000;
-            border: none;
-            margin-left:-45px;
-            font-size: 15px;
-            line-height: 18px;
-            font-weight: 600;
+            #submit-button {
             height: 48px!important;
-            position: relative;
-            /* top: -2px; */
         }
 
-        .invalid + #submit-button {
-            background-color: #808080!important;
+
         }
 
 
