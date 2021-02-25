@@ -820,6 +820,8 @@
             var submitError = document.getElementsByClassName('submit-error')[0];
 
             submitButton.addEventListener('click', function() {
+                
+                // if (e.preventDefault) e.preventDefault();
 
                 var submitInput = document.getElementById('mce-EMAIL');
                 var submitContainer = document.getElementById("mc_embed_signup");
@@ -829,10 +831,28 @@
                     submitButton.classList.add('hidden');
                     submitFeedback.classList.add('showme');
                     submitError.classList.remove('showme');
+                    console.log("hey");
+                    console.log(submitForm);
+                    console.log(submitInput.value);
+                    // submitForm.submit();
+
+                    // var data = new FormData(submitForm);
+
+
+                    var req = new XMLHttpRequest();
+                    req.open("POST", "https://csqdrx85a7.execute-api.us-east-1.amazonaws.com/dev/subscribe");
+                    req.send({"email": submitInput.value});
+
+                    console.log("done");
+
+
                 } else {
                     submitContainer.classList.add('invalid');
                     submitError.classList.add('showme');
                 }
+
+                // You must return false to prevent the default form behavior
+                // return false;
 
             });
 
