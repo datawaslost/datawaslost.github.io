@@ -841,7 +841,7 @@
 
                     var req = new XMLHttpRequest();
                     req.open("POST", "https://csqdrx85a7.execute-api.us-east-1.amazonaws.com/dev/subscribe");
-                    req.send({"email": submitInput.value});
+                    req.send(JSON.stringify({"email": submitInput.value}));
 
                     console.log("done");
 
